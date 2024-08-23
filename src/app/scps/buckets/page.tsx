@@ -5,6 +5,7 @@
  */
 import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
 
+// NOTE: The name of the function is irrelevant
 export default async function ServerComponent() {
   const supabase = getSupabaseCookiesUtilClient();
   const buckets = await supabase.storage.listBuckets();
