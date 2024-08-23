@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "bun run sb:gen:types && next dev",
+    "build": "bun run sb:gen:types && next build",
+    "start": "bun run sb:gen:types && next start",
     "lint": "next lint",
+    "sb:gen:types": "npx supabase gen types typescript --schema public --local > supabase.ts",
     "sb:start": "npx supabase start",
     "sb:stop": "npx supabase stop"
   },

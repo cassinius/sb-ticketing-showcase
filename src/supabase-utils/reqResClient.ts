@@ -1,17 +1,18 @@
 import { getSbEnvs } from "@/helpers/sbEnvs";
 import { createServerClient } from "@supabase/ssr";
 import { NextRequest, NextResponse } from "next/server";
+import type { Database } from "../../supabase";
 
 // NOTE: this function is used on the backend with *middleware*
 export const getSupabaseReqResClient = ({ request }: { request: NextRequest }) => {
-  const {url, anonKey} = getSbEnvs();
+  const { url, anonKey } = getSbEnvs();
 
   // NOTE: copy existing headers from the incoming request to retain existing cookies
   let response = {
     value: NextResponse.next({ request }),
   };
 
-  const supabase = createServerClient(url, anonKey, {
+  const supabase = createServerClient<Database>(url, anonKey, {
     cookies: {
       getAll() {
         return request.cookies.getAll();
