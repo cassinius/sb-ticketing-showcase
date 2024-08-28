@@ -5,7 +5,9 @@
  */
 import { getSupabaseCookiesUtilClient } from "@/supabase-utils/cookiesUtilClient";
 
+// NOTE: The function name does not matter, the endpoint is defined by the file path.
 export default function PageWithServerAction() {
+  // NOTE: The function name is not magic, since it is explicitly called by the client.
   async function serverActionWithSupabase() {
     "use server";
     const supabase = getSupabaseCookiesUtilClient();
